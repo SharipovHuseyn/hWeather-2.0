@@ -320,7 +320,7 @@ function formatDate(dateString) {
 }
 
 async function getWeatherWithIP(){
-    const ipResponse = await fetch('http://ip-api.com/json/');
+    const ipResponse = await fetch('https://ip-api.com/json/');
     const ipData = await ipResponse.json();
     const city = ipData.city.replace(/'/g, "");
 
