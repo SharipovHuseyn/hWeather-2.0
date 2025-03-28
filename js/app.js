@@ -320,7 +320,7 @@ function formatDate(dateString) {
 }
 
 async function getWeatherWithIP(){
-    const ipResponse = await fetch('https://ip-api.com/json/');
+    const ipResponse = await fetch('https://ipwhois.app/json/');
     const ipData = await ipResponse.json();
     const city = ipData.city.replace(/'/g, "");
 
@@ -361,8 +361,8 @@ async function getWeatherWithIP(){
         details[0].innerHTML = `Облачность: <span>${data.current.cloud}%</span>`;
         details[1].innerHTML = `Влажность: <span>${data.current.humidity}%</span>`;
         details[2].innerHTML = `Ветер: <span>${data.current.wind_kph} км/ч</span>`;
-        if(!ipData.countryCode) imgFlag.style = "display: none"
-        imgFlag.src = `https://flagsapi.com/${ipData.countryCode}/flat/64.png`  
+        if(!ipData.country_flag) imgFlag.style = "display: none"
+        imgFlag.src = ipData.country_flag 
 
         const sunrise = data.forecast.forecastday[0].astro.sunrise;
         const sunset = data.forecast.forecastday[0].astro.sunset;
