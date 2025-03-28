@@ -1,0 +1,385 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Roboto_flex";
+    margin:  20px 0 20px 0;
+}
+
+@font-face {
+    font-family: "Roboto_flex"; 
+    src: url("./fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XOPQ\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
+
+hr{
+    background-color: #e5e5e5;
+    height: 1.5px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.weather-dashboard {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border: 5px solid white;
+}
+
+.sidebar {
+    background: #007bff;
+    color: white;
+    padding: 20px;
+    width: 25%;
+    text-align: center;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.location{
+    text-align: start;
+}
+
+.weather-info {
+    margin-bottom: 20px;
+}
+
+.weather-info h1{
+    font-size: 48px;
+    font-weight: 500;
+}
+
+.details p, .sun-time p {
+    font-size: 14px;
+    margin: 15px 0;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    background: #4792f4;
+    border-radius: 10px;
+}
+
+.forecast {
+    flex-grow: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+.forecast header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.forecast input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.flag{
+    margin-left: 10px;
+}
+
+.forecast h3{
+    color: #84838b;
+    text-align: start;
+}
+
+.forecast-tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: #fafafa;
+    border-radius: 20px;
+}
+
+.forecast-tabs button {
+    transition: background 300ms;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    background-color: #fafafa;
+    color: #848484;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.forecast-tabs button:hover{
+    background: #152e4c;
+    color: white;
+}
+
+.forecast-tabs .active {
+    background: #152e4c;
+    color: white;
+    border-radius: 20px;
+}
+
+.forecast-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.day {
+    width: -webkit-fill-available;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1 1 150px;
+    margin: 10px;
+}
+
+.day img {
+    width: 50px;
+}
+
+
+.slider-container {
+    padding: 0 10px 20px 0px;
+}
+
+.slider-container p{
+    color: #848387;
+}
+
+.slider-container div h3{
+    color: #848387;
+    text-align: start;
+}
+
+.slider-container div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.slider-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.slider-controls button {
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+    color: #888;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.slider-controls button:hover {
+    color: #000;
+}
+
+.slider-controls button.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cities-wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 10px 20px 10px;
+}
+
+.cities {
+    display: flex;
+    gap: 15px;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+    width: 100%;
+}
+
+.city {
+    flex: 1 1 48%;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.city.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.city-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.city-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
+    cursor: pointer;
+}
+
+.city-weather {
+    font-size: 14px;
+    color: #777;
+}
+
+.city-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.city-temp {
+    font-size: 24px;
+    font-weight: bold;
+    color: #111;
+}
+
+.city img {
+    width: 40px;
+    height: 40px;
+}
+
+@media (max-width: 480px) {
+    .city {
+        flex: 1 1 100%;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .weather-dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .forecast header {
+        flex-direction: column;
+    }
+    
+    .forecast-tabs {
+        flex-wrap: wrap;
+    }
+
+    .forecast-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cities {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .forecast input {
+        width: 90%;
+    }
+    .forecast-tabs button {
+        width: 100%;
+    }
+    .day, .city {
+        width: -webkit-fill-available;
+    }
+}
+
+.forecast-date h2{
+    display: grid;
+    justify-content: start;
+}
+
+.forecast-date .sub-date{
+    color: #848387;
+    font-size: 14px;
+}
+
+.search-btn{
+    color: white;
+    background-color: #007bff;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+.forecast-input{
+    display: flex;
+}
+
+.location h2 img{
+    width: 20px;
+    margin-right: 10px;
+}
+
+.location h2{
+    display: flex;
+    align-items: center;
+}
+
+.location .sub-date, .sun-time p span{
+    color: #a1dbff;
+}
+
+.sun-time p img{
+    width: 25px;
+}
+
+.sun-time p{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sun-time p{
+    font-size: 18px;
+    font-weight: 200;
+}
+
+.sun-time p span{
+    font-size: 14px;
+}
+
+.chart-container {
+    margin: 20px auto;
+}
+
+.forecast[data-tab="Сейчас"] .chart-container {
+    display: none;
+}
+
+.weather-data p{
+    color:#777;
+    font-size: 14px;
+}
